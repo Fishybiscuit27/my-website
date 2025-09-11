@@ -29,10 +29,10 @@
     .hero h1 span {
       display: inline-block;
       color: var(--accent);
-      overflow: hidden;
       position: relative;
-      height: 0;
-      animation: printLetter 0.6s forwards;
+      opacity: 0;
+      transform: translateY(1em);
+      animation: layerUp 0.5s forwards;
     }
     .hero h1 span:nth-child(1) { animation-delay: 0s; }
     .hero h1 span:nth-child(2) { animation-delay: 0.1s; }
@@ -52,20 +52,21 @@
     .hero h1 span:nth-child(16) { animation-delay: 1.5s; }
     .hero h1 span:nth-child(17) { animation-delay: 1.6s; }
 
-    @keyframes printLetter {
-      from { height: 0; }
-      to { height: 1em; }
+    @keyframes layerUp {
+      from { opacity: 0; transform: translateY(1em); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Printhead line animation */
     .printhead-line {
       position: absolute;
-      bottom: 0;
+      bottom: -6px;
       left: 0;
       width: 100%;
-      height: 2px;
+      height: 4px;
       background: var(--accent);
-      animation: moveLine 2.5s linear infinite;
+      animation: moveLine 2s linear forwards;
+      animation-delay: 1.7s;
     }
     @keyframes moveLine {
       0% { transform: translateX(-100%); }
