@@ -41,16 +41,16 @@
 
     .word-scroll{
       display:inline-block;
-      animation: scrollWords 14s forwards;
+      animation: scrollWords 18s forwards;
     }
 
     @keyframes scrollWords {
-      0%, 10%   {transform: translateY(0%);}       /* Ideation pause */
-      20%, 30%  {transform: translateY(-100%);}    /* Design pause */
-      40%, 50%  {transform: translateY(-200%);}    /* Print pause */
-      60%, 70%  {transform: translateY(-300%);}    /* Ship pause */
-      80%, 90%  {transform: translateY(-400%);}    /* Solved pause */
-      100%      {transform: translateY(-500%);}    /* Printable3D */
+      0%, 10%   {transform: translateY(0%);}          /* Ideation pause */
+      20%, 30%  {transform: translateY(-100%);}       /* Design pause */
+      40%, 50%  {transform: translateY(-200%);}       /* Print pause */
+      60%, 70%  {transform: translateY(-300%);}       /* Ship pause */
+      80%, 90%  {transform: translateY(-400%);}       /* Solved pause */
+      100%      {transform: translateY(-500%);}       /* Printable3D */
     }
 
     .word-scroll span{
@@ -64,7 +64,7 @@
       font-weight:800;
       opacity:0;
       animation: showFinal 1s forwards;
-      animation-delay: 14s;
+      animation-delay: 18s;
     }
 
     @keyframes showFinal {
@@ -182,7 +182,4 @@
   </script>
 </body>
 </html>
-
-
-
 
