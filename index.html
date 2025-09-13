@@ -41,21 +41,16 @@
 
     .word-scroll{
       display:inline-block;
-      animation: scrollWords 7.5s steps(6, end) forwards;
+      animation: scrollWords 14s forwards;
     }
 
     @keyframes scrollWords {
-      0%   {transform: translateY(0%);}       /* Ideation */
-      10%  {transform: translateY(0%);}       /* pause */
-      20%  {transform: translateY(-100%);}    /* Design */
-      30%  {transform: translateY(-100%);}    /* pause */
-      40%  {transform: translateY(-200%);}    /* Print */
-      50%  {transform: translateY(-200%);}    /* pause */
-      60%  {transform: translateY(-300%);}    /* Ship */
-      70%  {transform: translateY(-300%);}    /* pause */
-      80%  {transform: translateY(-400%);}    /* Solved */
-      90%  {transform: translateY(-400%);}    /* pause */
-      100% {transform: translateY(-500%);}    /* Printable3D */
+      0%, 10%   {transform: translateY(0%);}       /* Ideation pause */
+      20%, 30%  {transform: translateY(-100%);}    /* Design pause */
+      40%, 50%  {transform: translateY(-200%);}    /* Print pause */
+      60%, 70%  {transform: translateY(-300%);}    /* Ship pause */
+      80%, 90%  {transform: translateY(-400%);}    /* Solved pause */
+      100%      {transform: translateY(-500%);}    /* Printable3D */
     }
 
     .word-scroll span{
@@ -67,13 +62,14 @@
     .word-scroll span:last-child{
       font-size:clamp(36px,6vw,72px);
       font-weight:800;
-      animation: enlargeFinal 1s forwards;
-      animation-delay: 7.5s;
+      opacity:0;
+      animation: showFinal 1s forwards;
+      animation-delay: 14s;
     }
 
-    @keyframes enlargeFinal {
-      0% {transform: scale(1);}
-      100% {transform: scale(1.3);} /* final stays enlarged */
+    @keyframes showFinal {
+      0% {opacity:0; transform: scale(1);}
+      100% {opacity:1; transform: scale(1.3);} /* final stays enlarged and visible */
     }
 
     .hero p{margin:0 0 1.5rem;opacity:.9}
@@ -186,6 +182,7 @@
   </script>
 </body>
 </html>
+
 
 
 
