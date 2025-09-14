@@ -27,66 +27,14 @@
     header nav a:hover{opacity:1}
 
     .hero{position:relative;min-height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--bg)}
-    .hero video{position:absolute;top:50%;left:50%;width:auto;height:100%;min-width:100%;min-height:100%;transform:translate(-50%,-50%);object-fit:cover;z-index:0;opacity:0.08}
-    .hero .content{position:relative;z-index:2;padding:2rem;max-width:var(--maxWidth);padding-top:100px} /* leave room for fixed header */
+    .hero video{position:absolute;top:50%;left:50%;width:auto;height:100%;min-width:100%;min-height:100%;transform:translate(-50%,-50%);object-fit:cover;z-index:0;opacity:0.1}
+    .hero .content{position:relative;z-index:2;padding:2rem;max-width:var(--maxWidth);}
 
     .hero h1{
       font-size:clamp(28px,5vw,56px);
       margin:40px 0;
       font-weight:700;
       color:var(--accent);
-      height:140px; /* more space to see the scroll */
-      overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    /* animation: 2s pause, 0.5s scroll - repeated between each word. Total timeline = 12.5s */
-    .word-scroll{
-      display:inline-block;
-      will-change:transform;
-      animation: scrollWords 12.5s ease-in-out forwards;
-    }
-
-    @keyframes scrollWords {
-      0%   { transform: translateY(0%); }       /* Ideation visible */
-      16%  { transform: translateY(0%); }       /* pause 2s */
-      20%  { transform: translateY(-100%); }    /* scroll to Design during 0.5s */
-
-      36%  { transform: translateY(-100%); }    /* pause */
-      40%  { transform: translateY(-200%); }    /* to Print */
-
-      56%  { transform: translateY(-200%); }    /* pause */
-      60%  { transform: translateY(-300%); }    /* to Ship */
-
-      76%  { transform: translateY(-300%); }    /* pause */
-      80%  { transform: translateY(-400%); }    /* to Solved */
-
-      96%  { transform: translateY(-400%); }    /* pause */
-      100% { transform: translateY(-500%); }    /* to Printable3D and stay */
-    }
-
-    .word-scroll span{
-      display:block;
-      height:140px;
-      line-height:140px;
-      text-align:center;
-    }
-
-    /* Enlarge final word after it becomes visible. Starts at 12.6s (slightly after scroll completes) */
-    .word-scroll span:last-child{
-      font-size:clamp(36px,6vw,72px);
-      font-weight:800;
-      transform-origin:center;
-      animation: enlargeFinal 0.6s ease forwards;
-      animation-delay: 12.6s; /* starts right after scroll finishes */
-      opacity:1;
-    }
-
-    @keyframes enlargeFinal{
-      from { transform: scale(1); }
-      to   { transform: scale(1.25); }
     }
 
     .hero p{margin:0 0 1.5rem;opacity:.9}
@@ -107,7 +55,7 @@
 <body>
   <!-- HEADER -->
   <header>
-    <div class="logo">Printable3D</div>
+    <div class="logo">Printable3D Studio</div>
     <nav>
       <a href="#hero">Home</a>
       <a href="#featureVideoSection">Feature</a>
@@ -123,16 +71,7 @@
     </video>
 
     <div class="content">
-      <h1>
-        <div class="word-scroll" aria-hidden="false">
-          <span>Ideation</span>
-          <span>Design</span>
-          <span>Print</span>
-          <span>Ship</span>
-          <span>Solved</span>
-          <span>Printable3D</span>
-        </div>
-      </h1>
+      <h1>Sample Text</h1>
       <p><a href="#order">Go to order form</a></p>
     </div>
   </section>
