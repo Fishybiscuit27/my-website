@@ -22,7 +22,11 @@
       padding:0 1.5rem;z-index:10;
       box-shadow:0 2px 6px rgba(0,0,0,0.1);
     }
-    header .logo{font-weight:700;font-size:20px;color:var(--accent)}
+    header .logo{
+      display:flex;align-items:center;gap:10px;
+      font-weight:700;font-size:20px;color:var(--accent)
+    }
+    header .logo img{height:40px;width:auto}
     header nav a{margin-left:20px;font-weight:500;opacity:.9}
     header nav a:hover{opacity:1}
 
@@ -55,7 +59,10 @@
 <body>
   <!-- HEADER -->
   <header>
-    <div class="logo">Printable3D Studio</div>
+    <div class="logo">
+      <img src="assets/fish-logo.png" alt="Printable3D Studio Logo">
+      Printable3D Studio
+    </div>
     <nav>
       <a href="#hero">Home</a>
       <a href="#featureVideoSection">Feature</a>
