@@ -5,63 +5,156 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Printable3D Studio</title>
   <style>
-    :root{
+    :root {
       --bg: #ffffff;
       --accent: #000000;
       --maxWidth: 1100px;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;background:var(--bg);color:var(--accent)}
-    a{color:var(--accent);text-decoration:none}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
+      background: var(--bg);
+      color: var(--accent);
+    }
+    a { color: var(--accent); text-decoration: none; }
 
     /* Header */
-    header{
-      position:fixed;top:0;left:0;width:100%;height:60px;
-      background:rgba(255,255,255,0.95);
-      display:flex;align-items:center;justify-content:space-between;
-      padding:0 1.5rem;z-index:10;
-      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 60px;
+      background: rgba(255,255,255,0.95);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.5rem;
+      z-index: 10;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    header .logo{
-      display:flex;align-items:center;gap:10px;
-      font-weight:700;font-size:20px;color:var(--accent)
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--accent);
     }
-    header .logo img{height:40px;width:auto}
-    header nav a{margin-left:20px;font-weight:500;opacity:.9}
-    header nav a:hover{opacity:1}
+    .logo-img {
+      height: 40px; /* adjust as needed */
+    }
+    header nav a {
+      margin-left: 20px;
+      font-weight: 500;
+      opacity: .9;
+    }
+    header nav a:hover { opacity: 1; }
 
-    .hero{position:relative;min-height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--bg)}
-    .hero video{position:absolute;top:50%;left:50%;width:auto;height:100%;min-width:100%;min-height:100%;transform:translate(-50%,-50%);object-fit:cover;z-index:0;opacity:0.1}
-    .hero .content{position:relative;z-index:2;padding:2rem;max-width:var(--maxWidth);}
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--bg);
+    }
+    .hero video {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: auto; height: 100%;
+      min-width: 100%; min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.1;
+    }
+    .hero .content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      max-width: var(--maxWidth);
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 56px);
+      margin: 40px 0;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .hero p { margin: 0 0 1.5rem; opacity: .9; }
 
-    .hero h1{
-      font-size:clamp(28px,5vw,56px);
-      margin:40px 0;
-      font-weight:700;
-      color:var(--accent);
+    .feature-video {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: #f9f9f9;
+    }
+    .feature-video video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
     }
 
-    .hero p{margin:0 0 1.5rem;opacity:.9}
+    .order-section {
+      padding: 4rem 1rem;
+      display: flex;
+      justify-content: center;
+      background: #f1f1f1;
+    }
+    .order-card {
+      width: 100%; max-width: 840px;
+      background: #fff; padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+    }
+    .order-card h2 { margin-top: 0; }
+    .field {
+      display: flex; gap: 12px; margin-bottom: 12px;
+    }
+    .field input, .field textarea, .field select {
+      flex: 1; padding: .8rem;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.2);
+      background: transparent;
+      color: inherit;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 999px;
+      padding: .8rem 1.1rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+    #formMessage {
+      margin-top: 12px;
+      padding: 10px;
+      border-radius: 8px;
+      display: none;
+    }
 
-    .feature-video{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#f9f9f9}
-    .feature-video video{width:100%;height:100%;object-fit:cover;opacity:0.9}
-    .order-section{padding:4rem 1rem;display:flex;justify-content:center;background:#f1f1f1;}
-    .order-card{width:100%;max-width:840px;background:#fff;padding:2rem;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.15)}
-    .order-card h2{margin-top:0}
-    .field{display:flex;gap:12px;margin-bottom:12px}
-    .field input,.field textarea,.field select{flex:1;padding:.8rem;border-radius:8px;border:1px solid rgba(0,0,0,0.2);background:transparent;color:inherit}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .btn{display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:.8rem 1.1rem;font-weight:600;border:none;cursor:pointer}
-    #formMessage{margin-top:12px;padding:10px;border-radius:8px;display:none}
-    @media(max-width:700px){.grid-2{grid-template-columns:1fr}.hero{align-items:flex-end;padding-bottom:6rem}header nav{display:none}}
+    @media(max-width:700px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .hero { align-items: flex-end; padding-bottom: 6rem; }
+      header nav { display: none; }
+    }
   </style>
 </head>
 <body>
   <!-- HEADER -->
   <header>
     <div class="logo">
-      <img src="assets/fish-logo.png" alt="Printable3D Studio Logo">
-      Printable3D Studio
+      <img src="assets/fish-logo.png" alt="Printable3D Studio Logo" class="logo-img">
+      <span class="logo-text">Printable3D Studio</span>
     </div>
     <nav>
       <a href="#hero">Home</a>
@@ -76,7 +169,6 @@
       <source src="assets/hero.mp4" type="video/mp4">
       Sorry — your browser does not support embedded videos.
     </video>
-
     <div class="content">
       <h1>Sample Text</h1>
       <p><a href="#order">Go to order form</a></p>
@@ -124,7 +216,11 @@
       formMessage.style.display = 'none';
       const formData = new FormData(orderForm);
       try {
-        const resp = await fetch(orderForm.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' }});
+        const resp = await fetch(orderForm.action, { 
+          method: 'POST', 
+          body: formData, 
+          headers: { 'Accept': 'application/json' }
+        });
         if (resp.ok) {
           formMessage.style.display = 'block';
           formMessage.style.background = '#e6ffe6';
