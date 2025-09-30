@@ -12,7 +12,7 @@
       --grid: rgba(0,0,0,0.04);
       --lines: rgba(0,0,0,0.15);
       --text: #000000;
-      --accent: #000000;    /* Black for text/logos */
+      --accent: #000000;    
       --button: #ff6600;    /* Orange button */
       --maxWidth: 1100px;
     }
@@ -39,8 +39,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-family: 'Comfortaa', sans-serif;
-      font-weight: 700; /* Bold */
+      font-weight: 700;
       font-size: 22px;
       color: var(--accent);
     }
@@ -56,7 +55,7 @@
     }
     header nav a:hover { color: var(--button); opacity: 1 }
 
-    /* HERO SECTION */
+    /* HERO SECTION (Blueprint style) */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -121,6 +120,19 @@
       color: #fff;
     }
 
+    /* Bottom-left logo */
+    .hero .bottom-logo {
+      position: absolute;
+      bottom: 30px;  /* adjust up from very bottom */
+      left: 30px;
+      z-index: 1;
+    }
+    .hero .bottom-logo img {
+      height: 60px; /* scale logo size */
+      width: auto;
+      opacity: 0.9;
+    }
+
     /* ORDER FORM */
     .order-section {
       padding: 4rem 1rem;
@@ -175,7 +187,7 @@
   <!-- HEADER -->
   <header>
     <div class="logo">
-      <img src="fish-logo.png" alt="<><">
+      <img src="fish-logo.png" alt="Printable3D Logo">
       Printable3D Studio
     </div>
     <nav>
@@ -190,6 +202,11 @@
       <h1>Printable3D</h1>
       <p>Design • Prototype • Print</p>
       <a href="#order">Start your project</a>
+    </div>
+
+    <!-- Bottom-left logo -->
+    <div class="bottom-logo">
+      <img src="fish-logo-outline.png" alt="Fish Logo Outline">
     </div>
   </section>
 
@@ -237,17 +254,4 @@
           formMessage.style.color = '#006600';
           formMessage.textContent = 'Thanks — your form was submitted successfully.';
           orderForm.reset();
-        } else {
-          throw new Error('Submission failed');
         }
-      } catch (err) {
-        formMessage.style.display = 'block';
-        formMessage.style.background = '#ffe6e6';
-        formMessage.style.color = '#990000';
-        formMessage.textContent = 'Error submitting form — please check the console and your form endpoint.';
-        console.error('Form submission error:', err);
-      }
-    });
-  </script>
-</body>
-</html>
