@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Printable3D Studio</title>
+  <!-- Import Comfortaa font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #ffffff;
@@ -32,7 +34,8 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-weight: 700;
+      font-family: 'Comfortaa', sans-serif; /* Apply Comfortaa */
+      font-weight: 700; /* Bold */
       font-size: 20px;
       color: var(--accent);
     }
@@ -47,46 +50,42 @@
     }
     header nav a:hover { opacity: 1 }
 
-    /* Blueprint Hero */
+    /* Hero */
     .hero {
       position: relative;
       min-height: 100vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-      background-color: #f9f9f9;
-      background-image: 
-        linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
-      background-size: 40px 40px;
-      border: 4px solid black;
-    }
-    .hero .center-text {
-      font-size: clamp(28px, 5vw, 56px);
-      font-weight: bold;
-      border: 2px solid black;
-      padding: 10px 20px;
-      background: white;
+      justify-content: center;
       text-align: center;
+      background: var(--bg);
     }
-    .title-block {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      width: 350px;
-      border: 2px solid black;
-      font-size: 0.8rem;
-      background: white;
-      padding: 5px;
+    .hero .content {
+      position: relative;
+      padding: 2rem;
+      max-width: var(--maxWidth);
     }
-    .title-block table {
-      width: 100%;
-      border-collapse: collapse;
+    .scrolling-words {
+      font-size: clamp(28px, 5vw, 56px);
+      font-weight: 700;
+      color: var(--accent);
+      height: 70px;
+      overflow: hidden;
+      display: inline-block;
     }
-    .title-block td {
-      border: 1px solid black;
-      padding: 4px;
+    .scrolling-words span {
+      display: block;
+      height: 70px;
+      line-height: 70px;
+      animation: scrollWords 9s infinite;
     }
+    @keyframes scrollWords {
+      0%, 10%   { transform: translateY(0%); }
+      20%, 30%  { transform: translateY(-100%); }
+      40%, 50%  { transform: translateY(-200%); }
+      60%, 100% { transform: translateY(0%); }
+    }
+    .hero p { margin-top: 1.5rem; }
 
     /* Order form */
     .order-section {
@@ -149,18 +148,15 @@
     </nav>
   </header>
 
-  <!-- BLUEPRINT HERO -->
+  <!-- HERO SECTION -->
   <section class="hero" id="hero">
-    <div class="center-text">PRINTABLE3D</div>
-
-    <div class="title-block">
-      <table>
-        <tr><td>Company</td><td>Printable3D Studio</td></tr>
-        <tr><td>Date</td><td>09/29/2025</td></tr>
-        <tr><td>Material</td><td>PLA</td></tr>
-        <tr><td>Scale</td><td>1:1</td></tr>
-        <tr><td>Drawing No.</td><td>0001</td></tr>
-      </table>
+    <div class="content">
+      <h1 class="scrolling-words">
+        <span>Design</span>
+        <span>Prototype</span>
+        <span>Print</span>
+      </h1>
+      <p><a href="#order">Go to order form</a></p>
     </div>
   </section>
 
