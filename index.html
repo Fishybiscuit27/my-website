@@ -55,7 +55,7 @@
     }
     header nav a:hover { color: var(--button); opacity: 1 }
 
-    /* HERO SECTION (Blueprint style) */
+    /* HERO SECTION */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -82,7 +82,7 @@
     .hero .content {
       position: relative;
       padding: 2rem;
-      z-index: 1;
+      z-index: 2; /* stays above logos */
     }
 
     .hero h1 {
@@ -100,7 +100,7 @@
 
     .hero p {
       margin-top: 1.5rem;
-      font-size: 20px;
+      font-size: 16px; /* smaller font */
       color: var(--text);
       opacity: 0.9;
     }
@@ -120,17 +120,43 @@
       color: #fff;
     }
 
-    /* Bottom-left logo */
-    .hero .bottom-logo {
+    /* Logos in bottom-left */
+    .hero .bottom-logo,
+    .hero .extra-logo {
       position: absolute;
+      left: 60px; /* pushed slightly right */
+      opacity: 0.3; /* 30% transparency */
+      z-index: 1; /* behind text */
+    }
+    .hero .bottom-logo {
       bottom: 30px;
-      left: 30px;
-      z-index: 1;
     }
     .hero .bottom-logo img {
-      height: 180px; /* tripled size */
+      height: 180px;
       width: auto;
-      opacity: 0.9;
+    }
+    .hero .extra-logo {
+      bottom: 230px; /* sits above the other logo */
+    }
+    .hero .extra-logo img {
+      height: 120px;
+      width: auto;
+    }
+
+    /* Blueprint detail box */
+    .hero .detail-box {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      width: 220px;
+      height: 120px;
+      border: 2px solid var(--lines);
+      background: rgba(255,255,255,0.6);
+      z-index: 1;
+      font-size: 12px;
+      text-align: left;
+      padding: 8px;
+      line-height: 1.4;
     }
 
     /* ORDER FORM */
@@ -204,9 +230,21 @@
       <a href="#order">Start your project</a>
     </div>
 
-    <!-- Bottom-left logo -->
+    <!-- Logos -->
     <div class="bottom-logo">
-      <img src="fish-logo-outline.png" alt="<><">
+      <img src="fish-logo-outline.png" alt="Fish Logo">
+    </div>
+    <div class="extra-logo">
+      <img src="fish3.png" alt="Fish 3 Logo">
+    </div>
+
+    <!-- Blueprint detail box -->
+    <div class="detail-box">
+      <strong>PROJECT SPEC</strong><br>
+      Scale: 1:1<br>
+      Material: PLA / ABS<br>
+      Layer Height: 0.2mm<br>
+      Revision: 02
     </div>
   </section>
 
