@@ -120,43 +120,41 @@
       color: #fff;
     }
 
-    /* Logos in bottom-left */
+    /* Logos */
     .hero .bottom-logo,
-    .hero .extra-logo {
+    .hero .fish3,
+    .hero .fish4 {
       position: absolute;
-      left: 60px; /* pushed slightly right */
       opacity: 0.3; /* 30% transparency */
       z-index: 1; /* behind text */
     }
+
     .hero .bottom-logo {
       bottom: 30px;
+      left: 60px; /* slightly right */
     }
     .hero .bottom-logo img {
       height: 180px;
       width: auto;
     }
-    .hero .extra-logo {
-      bottom: 230px; /* sits above the other logo */
+
+    .hero .fish3 {
+      bottom: 30px;
+      left: 50%; /* centered horizontally */
+      transform: translateX(-50%);
     }
-    .hero .extra-logo img {
+    .hero .fish3 img {
       height: 120px;
       width: auto;
     }
 
-    /* Blueprint detail box */
-    .hero .detail-box {
-      position: absolute;
-      bottom: 30px;
-      right: 30px;
-      width: 220px;
-      height: 120px;
-      border: 2px solid var(--lines);
-      background: rgba(255,255,255,0.6);
-      z-index: 1;
-      font-size: 12px;
-      text-align: left;
-      padding: 8px;
-      line-height: 1.4;
+    .hero .fish4 {
+      top: 40px;
+      right: 40px; /* placeholder top-right */
+    }
+    .hero .fish4 img {
+      height: 100px;
+      width: auto;
     }
 
     /* ORDER FORM */
@@ -234,17 +232,11 @@
     <div class="bottom-logo">
       <img src="fish-logo-outline.png" alt="Fish Logo">
     </div>
-    <div class="extra-logo">
+    <div class="fish3">
       <img src="fish3.png" alt="Fish 3 Logo">
     </div>
-
-    <!-- Blueprint detail box -->
-    <div class="detail-box">
-      <strong>PROJECT SPEC</strong><br>
-      Scale: 1:1<br>
-      Material: PLA / ABS<br>
-      Layer Height: 0.2mm<br>
-      Revision: 02
+    <div class="fish4">
+      <img src="fish4.png" alt="Fish 4 Logo">
     </div>
   </section>
 
