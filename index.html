@@ -8,12 +8,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #ffffff;        /* White background */
+      --bg: #ffffff;        
       --grid: rgba(0,0,0,0.04);
       --lines: rgba(0,0,0,0.15);
       --text: #000000;
       --accent: #000000;    
-      --button: #ff6600;    /* Orange button */
+      --button: #ff6600;    
       --maxWidth: 1100px;
     }
 
@@ -67,7 +67,6 @@
       overflow: hidden;
     }
 
-    /* Grid background */
     .hero::before {
       content: "";
       position: absolute;
@@ -82,7 +81,7 @@
     .hero .content {
       position: relative;
       padding: 2rem;
-      z-index: 2; /* stays above logos */
+      z-index: 2;
     }
 
     .hero h1 {
@@ -100,7 +99,7 @@
 
     .hero p {
       margin-top: 1.5rem;
-      font-size: 16px; /* smaller font */
+      font-size: 16px;
       color: var(--text);
       opacity: 0.9;
     }
@@ -125,7 +124,7 @@
       position: absolute;
       left: 60px;
       bottom: 30px;
-      opacity: 0.3; /* 30% transparency */
+      opacity: 0.3;
       z-index: 1;
     }
     .hero .bottom-logo img {
@@ -188,6 +187,21 @@
       display: none;
     }
 
+    /* FOOTER */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.6);
+      font-size: 12px;
+      padding: 6px 12px;
+      color: var(--text);
+      z-index: 5;
+      display: flex;
+      justify-content: flex-start;
+    }
+
     @media(max-width:700px) {
       .grid-2 { grid-template-columns: 1fr }
       header nav { display: none }
@@ -224,7 +238,7 @@
     </div>
   </section>
 
-  <!-- ORDER / QUESTIONNAIRE FORM -->
+  <!-- ORDER FORM -->
   <section class="order-section" id="order">
     <div class="order-card">
       <h2>How can we help?</h2>
@@ -239,16 +253,8 @@
         </div>
         <div class="field"><input name="address" type="text" placeholder="Address" required></div>
         <div class="field"><input name="project" type="text" placeholder="What are you looking to make?" required></div>
-        
-        <!-- NEW FIELD -->
-        <div class="field">
-          <textarea name="problem" rows="4" placeholder="Describe your problem or proposed solution" required></textarea>
-        </div>
-        
-        <div class="field">
-          <textarea name="details" rows="5" placeholder="Order Details (Measurements, Quantity, Color, etc)" required></textarea>
-        </div>
-        
+        <div class="field"><textarea name="problem" rows="4" placeholder="State your problem or proposed solution" required></textarea></div>
+        <div class="field"><textarea name="details" rows="5" placeholder="Order Details (Measurements, Quantity, Color, etc)" required></textarea></div>
         <input type="hidden" name="_source" value="starter-site">
         <div style="display:flex;gap:12px;align-items:center">
           <button class="btn" type="submit">Submit order</button>
@@ -257,6 +263,11 @@
       </form>
     </div>
   </section>
+
+  <!-- FOOTER -->
+  <footer>
+    (c) Printable3D 2025
+  </footer>
 
   <script>
     const orderForm = document.getElementById('orderForm');
@@ -288,4 +299,3 @@
   </script>
 </body>
 </html>
-
