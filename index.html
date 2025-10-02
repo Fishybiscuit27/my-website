@@ -187,19 +187,25 @@
       display: none;
     }
 
-    /* FOOTER */
-    footer {
+    /* BOTTOM CORNER TEXT */
+    .site-info {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.6);
+      bottom: 8px;
+      left: 12px;
       font-size: 12px;
-      padding: 6px 12px;
       color: var(--text);
+      opacity: 0.8;
       z-index: 5;
-      display: flex;
-      justify-content: flex-start;
+    }
+    .contact-info {
+      position: fixed;
+      bottom: 8px;
+      right: 12px;
+      font-size: 12px;
+      color: var(--text);
+      opacity: 0.8;
+      z-index: 5;
+      text-align: right;
     }
 
     @media(max-width:700px) {
@@ -264,10 +270,9 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    © Printable3D 2025
-  </footer>
+  <!-- CORNER TEXT -->
+  <div class="site-info">©Printable3D 2025</div>
+  <div class="contact-info">Contact Us: 475-279-8110 | printable3d.studio@gmail.com</div>
 
   <script>
     const orderForm = document.getElementById('orderForm');
