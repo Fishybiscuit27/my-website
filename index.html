@@ -82,6 +82,26 @@
       width:clamp(300px, 42vw, 520px);
     }
 
+    /* START PROJECT BUTTON */
+    .start-btn{
+      display:block;
+      margin-top:20px;
+      width:50%; /* half the text box width */
+      text-align:center;
+      padding:0.9rem 1rem;
+      border-radius:999px;
+      background:rgba(var(--orange),1);
+      color:#fff;
+      font-weight:600;
+      font-size:1rem;
+      text-decoration:none;
+      transition:background .2s;
+    }
+    .start-btn:hover{
+      background:#000;
+      color:#fff;
+    }
+
     /* ORDER FORM SECTION */
     .order-section{
       padding:4rem 1rem;
@@ -129,10 +149,12 @@
       .slogan-wrapper{top:90px;left:30px;}
       .slogan{width:clamp(260px,60vw,420px);}
       .sub-text{width:clamp(260px,60vw,420px);}
+      .start-btn{width:70%;}
     }
     @media(max-width:600px){
       .slogan-wrapper{position:relative;top:0;left:0;margin:8px auto 10px;}
       .slogan,.sub-text{width:100%;}
+      .start-btn{width:80%;margin-left:auto;margin-right:auto;}
       .hero{padding-top:60px;}
       .site-footer{flex-direction:column;gap:8px;text-align:center;}
     }
@@ -160,6 +182,7 @@
       <div class="sub-text">
         Printable3D is a mechanical engineering student run design studio specializing in additive manufacturing, dedicated to providing on-demand engineering design consulting and 3D printing services that are accessible and useful for everyday people.
       </div>
+      <a href="#order" class="start-btn">Start your Project</a>
     </div>
   </section>
 
