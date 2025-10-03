@@ -102,6 +102,20 @@
       color:#fff;
     }
 
+    /* Fish3 image */
+    .hero .fish3 {
+      position:absolute;
+      top:50%; /* center vertically */
+      left:55%; /* slightly right of middle */
+      transform:translate(-50%, -50%);
+      opacity:0.3; /* 30% transparent */
+      z-index:5; /* behind text */
+    }
+    .hero .fish3 img{
+      height:360px; /* 2x bigger than before (180px → 360px) */
+      width:auto;
+    }
+
     /* ORDER FORM SECTION */
     .order-section{
       padding:4rem 1rem;
@@ -184,6 +198,11 @@
       </div>
       <a href="#order" class="start-btn">Start your Project</a>
     </div>
+
+    <!-- Fish3 image -->
+    <div class="fish3">
+      <img src="fish3.png" alt="Fish 3 Logo">
+    </div>
   </section>
 
   <!-- ORDER FORM -->
@@ -200,7 +219,6 @@
           <div class="field"><input name="company" type="text" placeholder="Company (optional)"></div>
         </div>
         <div class="field"><input name="address" type="text" placeholder="Address" required></div>
-        <div class="field"><input name="project" type="text" placeholder="What are you looking to make?" required></div>
         <div class="field">
           <textarea name="problem" rows="4" placeholder="Describe your problem or proposed solution" required></textarea>
         </div>
