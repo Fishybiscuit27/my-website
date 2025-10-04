@@ -10,7 +10,8 @@
       --bg:#ffffff;
       --accent:#000000;
       --text:#000000;
-      --orange:255,102,0;
+      --orange:217,84,0; /* #D95400 */
+      --grid:rgba(0,0,0,0.04);
       --lines:rgba(0,0,0,0.15);
       --maxWidth:1100px;
     }
@@ -42,25 +43,31 @@
       min-height:100vh;
       padding-top:60px;
       overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:flex-start;
-      background:url('copenhagen.png') center center/cover no-repeat;
+      background:url('copenhagen.png') center/cover no-repeat;
+      display:block;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size:40px 40px;
+      z-index:0;
     }
 
-    /* translucent rectangle behind slogan */
-    .slogan-box {
-      background:rgba(255,255,255,0.75);
-      border-radius:16px;
-      padding:30px;
-      max-width:600px;
+    .slogan-wrapper{
+      position:absolute;
+      top:100px; left:60px;
+      z-index:25;
+      max-width:calc(var(--maxWidth) - 160px);
     }
-
     .slogan{
       font-size:clamp(20px, 3.2vw, 34px);
       font-weight:700;
-      line-height:1.2;
+      line-height:1.05;
       color:var(--accent);
+      width:clamp(300px, 42vw, 520px);
       text-align:left;
     }
     .sub-text{
@@ -69,13 +76,14 @@
       font-weight:400;
       line-height:1.4;
       color:rgba(0,0,0,0.85);
+      width:clamp(300px, 42vw, 520px);
     }
 
     /* START PROJECT BUTTON */
     .start-btn{
       display:block;
       margin-top:20px;
-      width:50%; /* half the text box width */
+      width:50%;
       text-align:center;
       padding:0.9rem 1rem;
       border-radius:999px;
@@ -96,12 +104,12 @@
       padding:4rem 1rem;
       display:flex;
       justify-content:center;
-      background:rgba(var(--orange),0.08); /* transparent orange background */
+      background:rgba(217,84,0,0.15); /* transparent #D95400 */
     }
     .order-card{
       width:100%;
       max-width:840px;
-      background:#fff; /* white card */
+      background:#fff;
       padding:2rem;
       border-radius:12px;
       box-shadow:0 6px 30px rgba(0,0,0,0.08);
@@ -135,11 +143,14 @@
     }
 
     @media(max-width:900px){
-      .slogan-box{margin:20px;max-width:90%;}
+      .slogan-wrapper{top:90px;left:30px;}
+      .slogan{width:clamp(260px,60vw,420px);}
+      .sub-text{width:clamp(260px,60vw,420px);}
       .start-btn{width:70%;}
     }
     @media(max-width:600px){
-      .slogan-box{margin:10px;max-width:100%;}
+      .slogan-wrapper{position:relative;top:0;left:0;margin:8px auto 10px;}
+      .slogan,.sub-text{width:100%;}
       .start-btn{width:80%;margin-left:auto;margin-right:auto;}
       .hero{padding-top:60px;}
       .site-footer{flex-direction:column;gap:8px;text-align:center;}
@@ -161,7 +172,7 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="slogan-box">
+    <div class="slogan-wrapper">
       <div class="slogan">
         Engineering printable solutions to solve the world’s challenges.
       </div>
