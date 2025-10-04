@@ -1,156 +1,159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Printable3D Studio</title>
+
   <style>
-    body {
-      margin: 0;
-      font-family: Helvetica, sans-serif;
-      background-color: white;
-      overflow-x: hidden;
+    :root{
+      --bg:#ffffff;
+      --accent:#000000;
+      --text:#000000;
+      --orange:217,84,0; /* #D95400 */
+      --grid:rgba(0,0,0,0.04);
+      --lines:rgba(0,0,0,0.15);
+      --maxWidth:1100px;
     }
 
-    /* Header */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      z-index: 1000;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{
+      height:100%;
+      font-family:'Helvetica','Arial',sans-serif;
+      background:var(--bg);
+      color:var(--text)
     }
 
-    header .logo {
-      display: flex;
-      align-items: center;
-      font-weight: bold;
-      font-size: 1.2em;
+    /* HEADER */
+    header{
+      position:fixed; top:0; left:0; right:0; height:60px;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 1.5rem; background:rgba(255,255,255,0.95); z-index:50;
+      border-bottom:1px solid var(--lines);
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
+    }
+    header .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:22px;color:var(--accent)}
+    header .logo img{height:40px;width:auto}
+    header nav a{margin-left:20px;font-weight:600;color:var(--text);opacity:.9}
+    header nav a:hover{color:rgba(var(--orange),1);opacity:1}
+
+    /* HERO */
+    .hero{
+      position:relative;
+      min-height:100vh;
+      padding-top:60px;
+      overflow:hidden;
+      background:url('copenhagen.png') center/cover no-repeat;
+      display:block;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size:40px 40px;
+      z-index:0;
     }
 
-    header .logo img {
-      height: 40px;
-      margin-right: 10px;
+    .slogan-wrapper{
+      position:absolute;
+      top:100px; left:60px;
+      z-index:25;
+      max-width:calc(var(--maxWidth) - 160px);
+    }
+    .slogan{
+      font-size:clamp(20px, 3.2vw, 34px);
+      font-weight:700;
+      line-height:1.05;
+      color:var(--accent);
+      width:clamp(300px, 42vw, 520px);
+      text-align:left;
+    }
+    .sub-text{
+      margin-top:12px;
+      font-size:clamp(13px, 1.6vw, 16px);
+      font-weight:400;
+      line-height:1.4;
+      color:rgba(0,0,0,0.85);
+      width:clamp(300px, 42vw, 520px);
     }
 
-    header nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
+    /* START PROJECT BUTTON */
+    .start-btn{
+      display:block;
+      margin-top:20px;
+      width:50%;
+      text-align:center;
+      padding:0.9rem 1rem;
+      border-radius:999px;
+      background:rgba(var(--orange),1);
+      color:#fff;
+      font-weight:600;
+      font-size:1rem;
+      text-decoration:none;
+      transition:background .2s;
+    }
+    .start-btn:hover{
+      background:#000;
+      color:#fff;
     }
 
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding-left: 50px;
-      background: url('fish-logo-outline.png') no-repeat center;
-      background-size: 250px;
-      background-position: 60% 70%;
+    /* ORDER FORM SECTION */
+    .order-section{
+      padding:4rem 1rem;
+      display:flex;
+      justify-content:center;
+      background:rgba(217,84,0,0.15); /* transparent #D95400 */
+    }
+    .order-card{
+      width:100%;
+      max-width:840px;
+      background:#fff;
+      padding:2rem;
+      border-radius:12px;
+      box-shadow:0 6px 30px rgba(0,0,0,0.08);
+    }
+    .order-card h2{margin-top:0;color:var(--accent)}
+    .field{display:flex;gap:12px;margin-bottom:12px}
+    .field input,
+    .field textarea,
+    .field select{
+      flex:1; padding:.8rem;
+      border-radius:8px;
+      border:1px solid rgba(0,0,0,0.2);
+      background:rgba(255,255,255,0.95);
+      color:inherit;
+    }
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .btn{
+      display:inline-block;background:rgba(var(--orange),1);color:#fff;
+      border-radius:999px;padding:.8rem 1.1rem;font-weight:600;border:none;cursor:pointer;
+    }
+    .btn:hover{background:#000;color:#fff}
+    #formMessage{margin-top:12px;padding:10px;border-radius:8px;display:none}
+
+    /* FOOTER */
+    .site-footer{
+      max-width:var(--maxWidth);
+      margin:30px auto 60px;
+      padding:12px 20px;
+      display:flex;justify-content:space-between;align-items:center;
+      color:var(--text);opacity:0.85;font-size:13px;
     }
 
-    .hero h1 {
-      font-size: 2em;
-      font-weight: bold;
-      max-width: 500px;
-      margin: 0 0 15px 0;
-      color: white; /* White text */
+    @media(max-width:900px){
+      .slogan-wrapper{top:90px;left:30px;}
+      .slogan{width:clamp(260px,60vw,420px);}
+      .sub-text{width:clamp(260px,60vw,420px);}
+      .start-btn{width:70%;}
     }
-
-    .hero p {
-      font-size: 1em;
-      max-width: 500px;
-      margin: 0 0 20px 0;
-      color: white; /* White text */
-    }
-
-    .hero .btn {
-      display: block;
-      width: 50%;
-      padding: 12px;
-      text-align: center;
-      background: #D95400;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    /* Order Section */
-    .order {
-      background: #D95400;
-      padding: 80px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    .order-card {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      max-width: 600px;
-      width: 100%;
-    }
-
-    .order-card h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    label {
-      margin: 10px 0 5px;
-      font-weight: bold;
-    }
-
-    input, textarea, select {
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      margin-bottom: 15px;
-      font-size: 1em;
-    }
-
-    button {
-      background: #D95400;
-      color: white;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1em;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    button:hover {
-      background: #b84400;
-    }
-
-    /* Footer */
-    footer {
-      background: transparent;
-      color: black;
-      font-size: 0.9em;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      position: relative;
+    @media(max-width:600px){
+      .slogan-wrapper{position:relative;top:0;left:0;margin:8px auto 10px;}
+      .slogan,.sub-text{width:100%;}
+      .start-btn{width:80%;margin-left:auto;margin-right:auto;}
+      .hero{padding-top:60px;}
+      .site-footer{flex-direction:column;gap:8px;text-align:center;}
     }
   </style>
 </head>
@@ -169,37 +172,85 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <h1>Engineering printable solutions to solve the world’s challenges.</h1>
-    <p>Printable3D is a mechanical engineering student run design studio specializing in additive manufacturing, dedicated to providing on-demand engineering design consulting and 3D printing services that are accessible and useful for everyday people.</p>
-    <a href="#order" class="btn">Start your Project</a>
+    <div class="slogan-wrapper">
+      <div class="slogan">
+        Engineering printable solutions to solve the world’s challenges.
+      </div>
+      <div class="sub-text">
+        Printable3D is a mechanical engineering student run design studio specializing in additive manufacturing, dedicated to providing on-demand engineering design consulting and 3D printing services that are accessible and useful for everyday people.
+      </div>
+      <a href="#order" class="start-btn">Start your Project</a>
+    </div>
   </section>
 
   <!-- ORDER FORM -->
-  <section class="order" id="order">
+  <section class="order-section" id="order">
     <div class="order-card">
-      <h2>Start Your Project</h2>
-      <form action="https://formspree.io/f/mzzbloaa" method="POST">
-        <label for="name">Full Name</label>
-        <input type="text" name="name" required>
-
-        <label for="email">Email</label>
-        <input type="email" name="email" required>
-
-        <label for="file">Upload Reference File (if any)</label>
-        <input type="file" name="file">
-
-        <label for="details">Describe your problem or proposed solution</label>
-        <textarea name="details" rows="5" required></textarea>
-
-        <button type="submit">Submit Order</button>
+      <h2>How can we help?</h2>
+      <form id="orderForm" action="https://formspree.io/f/mjkepnav" method="POST">
+        <div class="grid-2">
+          <div class="field"><input name="name" type="text" placeholder="Full name" required></div>
+          <div class="field"><input name="email" type="email" placeholder="Email address" required></div>
+        </div>
+        <div class="grid-2">
+          <div class="field"><input name="phone" type="tel" placeholder="Phone (optional)"></div>
+          <div class="field"><input name="company" type="text" placeholder="Company (optional)"></div>
+        </div>
+        <div class="field"><input name="address" type="text" placeholder="Address" required></div>
+        <div class="field">
+          <textarea name="problem" rows="4" placeholder="Describe your problem or proposed solution" required></textarea>
+        </div>
+        <div class="field">
+          <textarea name="details" rows="5" placeholder="Order Details (Measurements, Quantity, Color, etc)" required></textarea>
+        </div>
+        <input type="hidden" name="_source" value="starter-site">
+        <div style="display:flex;gap:12px;align-items:center">
+          <button class="btn" type="submit">Submit order</button>
+          <div id="formMessage" aria-live="polite"></div>
+        </div>
       </form>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <div>© Printable3D 2025</div>
+  <footer class="site-footer">
+    <div>©Printable3D 2025</div>
     <div>Contact Us: 475-279-8110 | printable3d.studio@gmail.com</div>
   </footer>
+
+  <script>
+    const orderForm = document.getElementById('orderForm');
+    const formMessage = document.getElementById('formMessage');
+
+    orderForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      formMessage.style.display = 'none';
+      const formData = new FormData(orderForm);
+
+      try {
+        const resp = await fetch(orderForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (resp.ok) {
+          formMessage.style.display = 'block';
+          formMessage.style.background = '#e6ffe6';
+          formMessage.style.color = '#006600';
+          formMessage.textContent = 'Thanks — your form was submitted successfully.';
+          orderForm.reset();
+        } else {
+          throw new Error('Submit failed');
+        }
+      } catch (err) {
+        formMessage.style.display = 'block';
+        formMessage.style.background = '#ffe6e6';
+        formMessage.style.color = '#660000';
+        formMessage.textContent = 'Oops! Something went wrong. Please try again.';
+        console.error(err);
+      }
+    });
+  </script>
 </body>
 </html>
