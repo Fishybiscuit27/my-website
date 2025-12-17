@@ -10,7 +10,6 @@
       --bg:#ffffff;
       --text:#000000;
       --grid:rgba(0,0,0,0.035);
-      --lines:rgba(0,0,0,0.15);
       --maxWidth:1100px;
     }
 
@@ -27,18 +26,16 @@
     header{
       position:fixed;
       top:0; left:0; right:0;
-      height:60px;
+      height:80px;
       display:flex;
       align-items:center;
       padding:0 1.5rem;
       background:transparent;
-      border:none;
-      box-shadow:none;
       z-index:50;
     }
 
     header .logo img{
-      height:40px;
+      height:80px; /* 2x logo */
       width:auto;
     }
 
@@ -46,7 +43,7 @@
     .hero{
       position:relative;
       min-height:100vh;
-      padding-top:60px;
+      padding-top:80px;
       display:flex;
       justify-content:center;
       background:#fff;
@@ -64,35 +61,51 @@
       z-index:0;
     }
 
-    /* SEARCH BAR */
-    .search-wrapper{
+    /* SEARCH + CARDS CONTAINER */
+    .hero-content{
       position:relative;
-      margin-top:120px;
       z-index:10;
+      margin-top:120px;
       width:50vw;
       min-width:320px;
-      max-width:700px;
+      max-width:900px;
     }
 
+    /* SEARCH BAR */
     .search-wrapper input{
       width:100%;
       padding:1rem 1.25rem;
       border-radius:999px;
-      border:1px solid #000;
+      border:1px solid #ffffff;
       font-size:1rem;
-      background:#fff;
+      background:transparent;
+      color:#000;
       box-shadow:0 6px 20px rgba(0,0,0,0.08);
       outline:none;
     }
 
+    .search-wrapper input::placeholder{
+      color:rgba(0,0,0,0.35);
+    }
+
     .search-wrapper input:focus{
-      border:1px solid #000;
       box-shadow:0 8px 26px rgba(0,0,0,0.12);
     }
 
-    .search-wrapper input::placeholder{
-      color:rgba(0,0,0,0.35);
-      font-weight:400;
+    /* CARD ROW */
+    .card-row{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:20px;
+      width:100%;
+    }
+
+    .card{
+      background:#ffffff;
+      border-radius:16px;
+      box-shadow:0 8px 30px rgba(0,0,0,0.08);
+      aspect-ratio:2 / 1; /* 2:1 width:height */
     }
 
     /* ORDER FORM (unchanged) */
@@ -159,8 +172,12 @@
       opacity:.85;
     }
 
-    @media(max-width:700px){
-      .search-wrapper{width:85vw;}
+    @media(max-width:900px){
+      .hero-content{width:80vw;}
+      .card-row{grid-template-columns:1fr;}
+    }
+
+    @media(max-width:600px){
       .site-footer{
         flex-direction:column;
         gap:8px;
@@ -181,12 +198,22 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="search-wrapper">
-      <input
-        type="text"
-        placeholder="example"
-        aria-label="Design search"
-      >
+    <div class="hero-content">
+
+      <div class="search-wrapper">
+        <input
+          type="text"
+          placeholder="Describe…"
+          aria-label="Design search"
+        >
+      </div>
+
+      <div class="card-row">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+      </div>
+
     </div>
   </section>
 
@@ -224,4 +251,5 @@
 
 </body>
 </html>
+
 
