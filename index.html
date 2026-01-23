@@ -22,7 +22,7 @@
       color:var(--text);
     }
 
-    /* HEADER — seamless */
+    /* HEADER */
     header{
       position:fixed;
       top:0; left:0; right:0;
@@ -35,21 +35,22 @@
     }
 
     header .logo img{
-      height:80px; /* 2x logo */
+      height:80px;
       width:auto;
     }
 
-    /* HERO */
+    /* HERO (printer.jpg placeholder) */
     .hero{
       position:relative;
       min-height:100vh;
       padding-top:80px;
       display:flex;
       justify-content:center;
-      background:#fff;
+      background:
+        linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
+        url("printer.jpg") center / cover no-repeat;
     }
 
-    /* subtle paper grid */
     .hero::before{
       content:"";
       position:absolute;
@@ -61,7 +62,6 @@
       z-index:0;
     }
 
-    /* SEARCH + CARDS CONTAINER */
     .hero-content{
       position:relative;
       z-index:10;
@@ -71,7 +71,6 @@
       max-width:900px;
     }
 
-    /* SEARCH BAR */
     .search-wrapper input{
       width:100%;
       padding:1rem 1.25rem;
@@ -92,7 +91,6 @@
       box-shadow:0 8px 26px rgba(0,0,0,0.12);
     }
 
-    /* CARD ROW */
     .card-row{
       margin-top:24px;
       display:grid;
@@ -105,10 +103,10 @@
       background:#ffffff;
       border-radius:16px;
       box-shadow:0 8px 30px rgba(0,0,0,0.08);
-      aspect-ratio:2 / 1; /* 2:1 width:height */
+      aspect-ratio:2 / 1;
     }
 
-    /* ORDER FORM (unchanged) */
+    /* ORDER FORM */
     .order-section{
       padding:4rem 1rem;
       display:flex;
@@ -124,8 +122,6 @@
       border-radius:12px;
       box-shadow:0 6px 30px rgba(0,0,0,0.08);
     }
-
-    .order-card h2{margin-top:0}
 
     .field{display:flex;gap:12px;margin-bottom:12px}
 
@@ -153,14 +149,6 @@
       cursor:pointer;
     }
 
-    #formMessage{
-      margin-top:12px;
-      padding:10px;
-      border-radius:8px;
-      display:none;
-    }
-
-    /* FOOTER */
     .site-footer{
       max-width:var(--maxWidth);
       margin:30px auto 60px;
@@ -189,65 +177,75 @@
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="logo">
-      <img src="fish-logo.png" alt="Printable3D Logo">
+<header>
+  <div class="logo">
+    <img src="fish-logo.png" alt="Printable3D Logo">
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+
+    <div class="search-wrapper">
+      <input type="text" placeholder="Describe…" aria-label="Design search">
     </div>
-  </header>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-content">
+    <div class="card-row">
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+    </div>
 
-      <div class="search-wrapper">
-        <input
-          type="text"
-          placeholder="Describe…"
-          aria-label="Design search"
-        >
+  </div>
+</section>
+
+<section class="order-section">
+  <div class="order-card">
+    <h2>How can we help?</h2>
+
+    <form
+      action="https://formspree.io/f/mjkepnav"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <!-- Redirect to checkout page -->
+      <input type="hidden" name="_redirect" value="checkout.html">
+
+      <div class="grid-2">
+        <div class="field"><input name="name" type="text" placeholder="Full name" required></div>
+        <div class="field"><input name="email" type="email" placeholder="Email address" required></div>
       </div>
 
-      <div class="card-row">
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
+      <div class="grid-2">
+        <div class="field"><input name="phone" type="tel" placeholder="Phone (optional)"></div>
+        <div class="field"><input name="company" type="text" placeholder="Company (optional)"></div>
       </div>
 
-    </div>
-  </section>
+      <div class="field"><input name="address" type="text" placeholder="Address" required></div>
 
-  <!-- ORDER FORM -->
-  <section class="order-section" id="order">
-    <div class="order-card">
-      <h2>How can we help?</h2>
-      <form id="orderForm" action="https://formspree.io/f/mjkepnav" method="POST">
-        <div class="grid-2">
-          <div class="field"><input name="name" type="text" placeholder="Full name" required></div>
-          <div class="field"><input name="email" type="email" placeholder="Email address" required></div>
-        </div>
-        <div class="grid-2">
-          <div class="field"><input name="phone" type="tel" placeholder="Phone (optional)"></div>
-          <div class="field"><input name="company" type="text" placeholder="Company (optional)"></div>
-        </div>
-        <div class="field"><input name="address" type="text" placeholder="Address" required></div>
-        <div class="field">
-          <textarea name="problem" rows="4" placeholder="Describe your problem or proposed solution" required></textarea>
-        </div>
-        <div class="field">
-          <textarea name="details" rows="5" placeholder="Order Details (Measurements, Quantity, Color, etc)" required></textarea>
-        </div>
-        <button class="btn" type="submit">Submit order</button>
-        <div id="formMessage"></div>
-      </form>
-    </div>
-  </section>
+      <div class="field">
+        <textarea name="problem" rows="4" placeholder="Describe your problem or proposed solution" required></textarea>
+      </div>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div>©Printable3D 2026</div>
-    <div>Contact Us: (475)-279-8110 | printable3d.studio@gmail.com</div>
-  </footer>
+      <div class="field">
+        <textarea name="details" rows="5" placeholder="Order Details (Measurements, Quantity, Color, etc)" required></textarea>
+      </div>
+
+      <!-- File Upload -->
+      <div class="field">
+        <input type="file" name="file"
+          accept=".stl,.step,.obj,.pdf,.png,.jpg,.jpeg">
+      </div>
+
+      <button class="btn" type="submit">Submit order</button>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div>© Printable3D 2026</div>
+  <div>Contact Us: (475)-279-8110 | printable3d.studio@gmail.com</div>
+</footer>
 
 </body>
 </html>
