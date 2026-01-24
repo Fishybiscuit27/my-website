@@ -103,7 +103,7 @@
 </section>
 
 <script>
-  const stripe = Stripe("pk_test_YOUR_PUBLISHABLE_KEY");
+  const stripe = Stripe("pk_test_51StCMmQrM7is9WwvwIbazcIlnfeqAZW6hDCEhVnVm4AAwoFVmXk7A01QNdNxRUKNICmEpnLv6OKZ94UnCjbJMtEw00Pl45693w");
 
   document.getElementById("payNow").addEventListener("click", async () => {
     const response = await fetch("/create-checkout-session", {
