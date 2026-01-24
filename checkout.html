@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
+  <script src="https://js.stripe.com/v3/"></script>
+
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
 
@@ -59,7 +61,20 @@
     .checkout p{
       font-size:16px;
       font-weight:700;
+      margin-bottom:32px;
       opacity:.85;
+    }
+
+    .pay-btn{
+      padding:14px;
+      width:100%;
+      border:none;
+      border-radius:999px;
+      background:#ff8b3d;
+      color:#fff;
+      font-size:14px;
+      font-weight:800;
+      cursor:pointer;
     }
   </style>
 </head>
@@ -80,12 +95,27 @@
 
 <section class="checkout">
   <h1>Checkout</h1>
-  <p>
-    This is where payment and order confirmation will go.
-    <br><br>
-    (Stripe, PayPal, or manual invoice can be added next.)
-  </p>
+  <p>Secure payment powered by Stripe.</p>
+
+  <button id="payNow" class="pay-btn">
+    Pay Now
+  </button>
 </section>
+
+<script>
+  const stripe = Stripe("pk_test_YOUR_PUBLISHABLE_KEY");
+
+  document.getElementById("payNow").addEventListener("click", async () => {
+    const response = await fetch("/create-checkout-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" }
+    });
+
+    const session = await response.json();
+    window.location.href = session.url;
+  });
+</script>
 
 </body>
 </html>
+
