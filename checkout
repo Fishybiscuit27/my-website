@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Order Received | Printable3D</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body{
+      font-family:Helvetica, Arial, sans-serif;
+      background:#f7f7f7;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+    }
+
+    .card{
+      background:#fff;
+      padding:2.5rem;
+      max-width:520px;
+      border-radius:14px;
+      box-shadow:0 10px 40px rgba(0,0,0,.1);
+      text-align:center;
+    }
+
+    h1{
+      margin-bottom:.5rem;
+    }
+
+    p{
+      opacity:.85;
+      margin-bottom:1.5rem;
+    }
+
+    .btn{
+      display:inline-block;
+      background:#000;
+      color:#fff;
+      padding:.8rem 1.2rem;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:600;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>Order Received</h1>
+    <p>
+      We’ve received your request and any attached files.
+      Our team will review your project and contact you shortly
+      with questions, pricing, and next steps.
+    </p>
+
+    <a href="index.html" class="btn">Return Home</a>
+  </div>
+
+</body>
+</html>
