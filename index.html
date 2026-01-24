@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Printable3D Studio</title>
 
+  <!-- Montserrat Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --bg:#ffffff;
@@ -17,7 +22,7 @@
 
     html,body{
       height:100%;
-      font-family:Helvetica, Arial, sans-serif;
+      font-family:'Montserrat', sans-serif;
       background:var(--bg);
       color:var(--text);
     }
@@ -27,16 +32,37 @@
       position:fixed;
       top:0; left:0; right:0;
       height:80px;
+      padding:0 1.5rem;
       display:flex;
       align-items:center;
-      padding:0 1.5rem;
+      justify-content:space-between;
       background:transparent;
       z-index:50;
     }
 
-    header .logo img{
-      height:80px;
+    .header-left{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .header-left img{
+      height:60px;
       width:auto;
+    }
+
+    .brand-text{
+      font-size:20px;
+      font-weight:600;
+      letter-spacing:.5px;
+    }
+
+    .header-right{
+      text-align:right;
+      font-size:14px;
+      font-weight:600;
+      line-height:1.4;
+      letter-spacing:.5px;
     }
 
     /* HERO */
@@ -58,19 +84,6 @@
         linear-gradient(90deg, var(--grid) 1px, transparent 1px);
       background-size:40px 40px;
       z-index:0;
-    }
-
-    /* TOP RIGHT TEXT */
-    .hero-top-right{
-      position:absolute;
-      top:110px;
-      right:40px;
-      z-index:10;
-      text-align:right;
-      font-size:20px;
-      font-weight:600;
-      line-height:1.4;
-      letter-spacing:.5px;
     }
 
     /* BOTTOM LEFT TEXT */
@@ -101,6 +114,11 @@
       box-shadow:0 6px 30px rgba(0,0,0,0.08);
     }
 
+    .order-card h2{
+      margin-bottom:1rem;
+      font-weight:600;
+    }
+
     .field{
       display:flex;
       gap:12px;
@@ -113,6 +131,7 @@
       padding:.8rem;
       border-radius:8px;
       border:1px solid rgba(0,0,0,0.2);
+      font-family:'Montserrat', sans-serif;
     }
 
     .grid-2{
@@ -129,6 +148,7 @@
       font-weight:600;
       border:none;
       cursor:pointer;
+      font-family:'Montserrat', sans-serif;
     }
 
     /* FOOTER */
@@ -150,15 +170,14 @@
     }
 
     @media(max-width:600px){
-      .hero-top-right{
-        right:20px;
-        font-size:16px;
-      }
-
       .hero-bottom-left{
         left:20px;
         bottom:40px;
         font-size:40px;
+      }
+
+      .header-right{
+        font-size:12px;
       }
 
       .site-footer{
@@ -173,27 +192,24 @@
 <body>
 
 <header>
-  <div class="logo">
+  <div class="header-left">
     <img src="fish-logo.png" alt="Printable3D Logo">
+    <div class="brand-text">Printable3D</div>
   </div>
-</header>
 
-<section class="hero">
-
-  <!-- Top Right Text -->
-  <div class="hero-top-right">
+  <div class="header-right">
     Engineering<br>
     Printable<br>
     Solutions
   </div>
+</header>
 
-  <!-- Bottom Left Text -->
+<section class="hero">
   <div class="hero-bottom-left">
     Designed.<br>
     Printed.<br>
     Delivered.
   </div>
-
 </section>
 
 <section class="order-section">
@@ -244,3 +260,4 @@
 
 </body>
 </html>
+
