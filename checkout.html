@@ -2,61 +2,90 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Order Received | Printable3D</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout — Printable3D</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+
     body{
-      font-family:Helvetica, Arial, sans-serif;
-      background:#f7f7f7;
+      font-family:'Montserrat', sans-serif;
+      background:#ffffff;
+      color:#000;
+    }
+
+    header{
+      height:80px;
+      padding:0 32px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .header-left{
       display:flex;
       align-items:center;
-      justify-content:center;
-      min-height:100vh;
+      gap:10px;
+      font-weight:800;
+      font-size:18px;
     }
 
-    .card{
-      background:#fff;
-      padding:2.5rem;
-      max-width:520px;
-      border-radius:14px;
-      box-shadow:0 10px 40px rgba(0,0,0,.1);
-      text-align:center;
+    .header-left img{height:34px}
+
+    .header-right{
+      text-align:right;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.08em;
+      line-height:1.4;
     }
 
-    h1{
-      margin-bottom:.5rem;
+    .checkout{
+      padding:120px 32px;
+      max-width:720px;
+      margin:0 auto;
     }
 
-    p{
+    .checkout h1{
+      font-size:42px;
+      font-weight:800;
+      margin-bottom:24px;
+    }
+
+    .checkout p{
+      font-size:16px;
+      font-weight:700;
       opacity:.85;
-      margin-bottom:1.5rem;
-    }
-
-    .btn{
-      display:inline-block;
-      background:#000;
-      color:#fff;
-      padding:.8rem 1.2rem;
-      border-radius:999px;
-      text-decoration:none;
-      font-weight:600;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="card">
-    <h1>Order Received</h1>
-    <p>
-      We’ve received your request and any attached files.
-      Our team will review your project and contact you shortly
-      with questions, pricing, and next steps.
-    </p>
-
-    <a href="index.html" class="btn">Return Home</a>
+<header>
+  <div class="header-left">
+    <img src="fish-logo.png" alt="Printable3D">
+    Printable3D
   </div>
+  <div class="header-right">
+    ENGINEERING<br>
+    PRINTABLE<br>
+    SOLUTIONS
+  </div>
+</header>
+
+<section class="checkout">
+  <h1>Checkout</h1>
+  <p>
+    This is where payment and order confirmation will go.
+    <br><br>
+    (Stripe, PayPal, or manual invoice can be added next.)
+  </p>
+</section>
 
 </body>
 </html>
