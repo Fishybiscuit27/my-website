@@ -19,7 +19,6 @@
       color:#000;
     }
 
-    /* HEADER */
     header{
       height:80px;
       padding:0 32px;
@@ -36,9 +35,7 @@
       font-size:18px;
     }
 
-    .header-left img{
-      height:34px;
-    }
+    .header-left img{height:34px}
 
     .header-right{
       text-align:right;
@@ -48,18 +45,13 @@
       line-height:1.4;
     }
 
-    /* HERO WRAPPER */
-    .hero-wrapper{
-      padding:0 32px;
-    }
+    .hero-wrapper{padding:0 32px}
 
-    /* HERO CARD */
     .hero-card{
-      position:relative;
       height:420px;
       border-radius:28px;
-      background:linear-gradient(180deg, #ffa56a 0%, #f6d5ad 100%);
-      box-shadow:0 30px 80px rgba(0,0,0,0.12);
+      background:linear-gradient(180deg,#ffa56a 0%,#f6d5ad 100%);
+      box-shadow:0 30px 80px rgba(0,0,0,.12);
       padding:48px;
       display:flex;
       align-items:flex-end;
@@ -71,7 +63,6 @@
       line-height:1.05;
     }
 
-    /* ORDER SECTION */
     .order-section{
       padding:140px 32px 160px;
     }
@@ -87,29 +78,22 @@
       margin-bottom:32px;
     }
 
-    .field{
-      margin-bottom:20px;
-    }
+    .field{margin-bottom:20px}
 
     .field input,
     .field textarea{
       width:100%;
       padding:14px 16px;
       font-size:14px;
-      font-family:'Montserrat', sans-serif;
       border-radius:8px;
       border:1px solid #ccc;
+      font-family:'Montserrat', sans-serif;
       font-weight:700;
     }
 
     .field textarea{
       height:120px;
       resize:none;
-    }
-
-    .file-upload{
-      font-size:14px;
-      font-weight:700;
     }
 
     .submit-btn{
@@ -124,16 +108,6 @@
       font-weight:800;
       cursor:pointer;
     }
-
-    @media(max-width:768px){
-      .hero-title{
-        font-size:48px;
-      }
-
-      .hero-card{
-        height:360px;
-      }
-    }
   </style>
 </head>
 
@@ -144,7 +118,6 @@
     <img src="fish-logo.png" alt="Printable3D">
     Printable3D
   </div>
-
   <div class="header-right">
     ENGINEERING<br>
     PRINTABLE<br>
@@ -166,15 +139,9 @@
   <div class="order-inner">
     <h2>Order Form</h2>
 
-    <form
-      action="https://formspree.io/f/mjkepnav"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      <input type="hidden" name="_redirect" value="checkout.html">
-
+    <form action="checkout.html" method="GET">
       <div class="field">
-        <input name="name" type="text" placeholder="Name" required>
+        <input name="name" placeholder="Name" required>
       </div>
 
       <div class="field">
@@ -182,11 +149,11 @@
       </div>
 
       <div class="field">
-        <input name="phone" type="tel" placeholder="Phone (optional)">
+        <input name="phone" placeholder="Phone (optional)">
       </div>
 
       <div class="field">
-        <input name="address" type="text" placeholder="Address" required>
+        <input name="address" placeholder="Address" required>
       </div>
 
       <div class="field">
@@ -194,20 +161,19 @@
       </div>
 
       <div class="field">
-        <textarea name="details" placeholder="Order details (quantity, color, filament)" required></textarea>
+        <input name="quantity" type="number" min="1" placeholder="Quantity" required>
       </div>
 
       <div class="field">
-        <input
-          class="file-upload"
-          type="file"
-          name="file"
-          accept=".stl,.step,.iges,.obj,.pdf,.png,.jpg"
-        >
+        <textarea name="details" placeholder="Order details (color, filament, notes)" required></textarea>
+      </div>
+
+      <div class="field">
+        <input type="file" name="file">
       </div>
 
       <button class="submit-btn" type="submit">
-        Submit Order
+        Checkout
       </button>
     </form>
   </div>
@@ -215,4 +181,3 @@
 
 </body>
 </html>
-
