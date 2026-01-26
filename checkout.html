@@ -128,10 +128,10 @@
 
   <!-- STRIPE LOGIC -->
   <script>
-    const stripe = Stripe("pk_test_XXXXXXXXXXXXXXXX");
+    const stripe = Stripe("pk_test_51StCMmQrM7is9WwvwIbazcIlnfeqAZW6hDCEhVnVm4AAwoFVmXk7A01QNdNxRUKNICmEpnLv6OKZ94UnCjbJMtEw00Pl45693w");
 
     document.getElementById("checkoutBtn").addEventListener("click", () => {
-      fetch("https://YOUR_RENDER_URL/create-checkout-session", {
+      fetch("https://printable3d-stripe.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
