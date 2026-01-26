@@ -127,30 +127,35 @@
   </main>
 
   <!-- STRIPE LOGIC -->
-  <script>
-    const stripe = Stripe("pk_test_51StCMmQrM7is9WwvwIbazcIlnfeqAZW6hDCEhVnVm4AAwoFVmXk7A01QNdNxRUKNICmEpnLv6OKZ94UnCjbJMtEw00Pl45693w");
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const checkoutBtn = document.getElementById("checkoutBtn");
+    if (!checkoutBtn) return;
 
-    document.getElementById("checkoutBtn").addEventListener("click", () => {
+    checkoutBtn.addEventListener("click", () => {
       fetch("https://printable3d-stripe.onrender.com/create-checkout-session", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         }
       })
-      .then(res => res.json())
-      .then(data => {
-        if (data.url) {
-          window.location.href = user.url);
-        } else {
-          alert("Checkout session failed to start");
-        }
-      });
-      .catch(err => {
-        console.error(err);
-        alert("Error connecting to payment server.");
-      });
+        .then(res => res.json())
+        .then(data => {
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            alert("Checkout session failed to start");
+            console.error("Unexpected response:", data);
+          }
+        })
+        .catch(err => {
+          console.error("Fetch error:", err);
+          alert("Error connecting to payment server");
+        });
     });
-  </script>
+  });
+</script>
 
 </body>
 </html>
