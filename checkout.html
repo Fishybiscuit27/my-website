@@ -1,120 +1,156 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Checkout — Printable3D</title>
+  <meta charset="utf-8" />
+  <title>Checkout | Printable3D</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <!-- Montserrat Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 
+  <!-- Stripe -->
   <script src="https://js.stripe.com/v3/"></script>
 
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-
-    body{
-      font-family:'Montserrat', sans-serif;
-      background:#ffffff;
-      color:#000;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
     }
 
-    header{
-      height:80px;
-      padding:0 32px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+    body {
+      background: #f6f6f6;
+      color: #000;
+      min-height: 100vh;
     }
 
-    .header-left{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-weight:800;
-      font-size:18px;
+    /* HEADER */
+    header {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
-    .header-left img{height:34px}
-
-    .header-right{
-      text-align:right;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:.08em;
-      line-height:1.4;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 20px;
     }
 
-    .checkout{
-      padding:120px 32px;
-      max-width:720px;
-      margin:0 auto;
+    .logo img {
+      height: 48px;
     }
 
-    .checkout h1{
-      font-size:42px;
-      font-weight:800;
-      margin-bottom:24px;
+    .header-text {
+      text-align: right;
+      font-weight: 600;
+      line-height: 1.2;
     }
 
-    .checkout p{
-      font-size:16px;
-      font-weight:700;
-      margin-bottom:32px;
-      opacity:.85;
+    /* MAIN */
+    main {
+      display: flex;
+      justify-content: center;
+      padding: 4rem 1rem;
     }
 
-    .pay-btn{
-      padding:14px;
-      width:100%;
-      border:none;
-      border-radius:999px;
-      background:#ff8b3d;
-      color:#fff;
-      font-size:14px;
-      font-weight:800;
-      cursor:pointer;
+    .checkout-card {
+      background: #fff;
+      width: 100%;
+      max-width: 520px;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .checkout-card h1 {
+      font-size: 32px;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .checkout-card p {
+      font-size: 15px;
+      opacity: 0.8;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 1rem 2rem;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <div class="header-left">
-    <img src="fish-logo.png" alt="Printable3D">
-    Printable3D
-  </div>
-  <div class="header-right">
-    ENGINEERING<br>
-    PRINTABLE<br>
-    SOLUTIONS
-  </div>
-</header>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="fish-logo.png" alt="Printable3D Logo">
+      Printable3D
+    </div>
 
-<section class="checkout">
-  <h1>Checkout</h1>
-  <p>Secure payment powered by Stripe.</p>
+    <div class="header-text">
+      Engineering<br>
+      Printable<br>
+      Solutions
+    </div>
+  </header>
 
-  <button id="payNow" class="pay-btn">
-    Pay Now
-  </button>
-</section>
+  <!-- MAIN -->
+  <main>
+    <div class="checkout-card">
+      <h1>Checkout</h1>
+      <p>You’ll be redirected to our secure payment provider.</p>
+      <button id="checkoutBtn" class="btn">Proceed to Payment</button>
+    </div>
+  </main>
 
-<script>
-  const stripe = Stripe("pk_test_51StCMmQrM7is9WwvwIbazcIlnfeqAZW6hDCEhVnVm4AAwoFVmXk7A01QNdNxRUKNICmEpnLv6OKZ94UnCjbJMtEw00Pl45693w");
+  <!-- STRIPE LOGIC -->
+  <script>
+    const stripe = Stripe("pk_test_XXXXXXXXXXXXXXXX");
 
-  document.getElementById("payNow").addEventListener("click", async () => {
-    const response = await fetch("/create-checkout-session", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" }
+    document.getElementById("checkoutBtn").addEventListener("click", () => {
+      fetch("https://YOUR_RENDER_URL/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.id) {
+          stripe.redirectToCheckout({ sessionId: data.id });
+        } else {
+          alert("Checkout session failed to start.");
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Error connecting to payment server.");
+      });
     });
-
-    const session = await response.json();
-    window.location.href = session.url;
-  });
-</script>
+  </script>
 
 </body>
 </html>
