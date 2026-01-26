@@ -139,12 +139,12 @@
       })
       .then(res => res.json())
       .then(data => {
-        if (data.id) {
-          stripe.redirectToCheckout({ sessionId: data.id });
+        if (data.url) {
+          window.location.href = user.url);
         } else {
-          alert("Checkout session failed to start.");
+          alert("Checkout session failed to start");
         }
-      })
+      });
       .catch(err => {
         console.error(err);
         alert("Error connecting to payment server.");
