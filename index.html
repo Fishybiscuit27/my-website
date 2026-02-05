@@ -75,6 +75,7 @@
     }
 
     .step{
+      height:294px; /* 1.5x the original height (196px * 1.5 = 294px) */
       background:linear-gradient(180deg,#ffa56a 0%,#f6d5ad 100%);
       border:none;
       border-radius:24px;
@@ -83,6 +84,48 @@
       font-weight:800;
       font-size:14px;
       line-height:1.4;
+      position:relative;
+      overflow:hidden;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
+
+    /* Individual step background images - update these paths once you upload your images */
+    .step:nth-child(1){
+      background-image:url('step1-image.jpg');
+    }
+
+    .step:nth-child(2){
+      background-image:url('step2-image.jpg');
+    }
+
+    .step:nth-child(3){
+      background-image:url('step3-image.jpg');
+    }
+
+    .step:nth-child(4){
+      background-image:url('step4-image.jpg');
+    }
+
+    /* Text overlay - hidden by default */
+    .step-text{
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px 22px;
+      background:rgba(255,255,255,0.85);
+      opacity:0;
+      transition:opacity 0.3s ease;
+    }
+
+    .step:hover .step-text{
+      opacity:1;
     }
 
     /* ========================= */
@@ -161,16 +204,24 @@
 
 <div class="process-steps">
   <div class="step">
-    Orders are reviewed and forwarded to our engineering team
+    <div class="step-text">
+      Orders are reviewed and forwarded to our engineering team
+    </div>
   </div>
   <div class="step">
-    Parts are produced using high-quality Bambu Lab 3D printers
+    <div class="step-text">
+      Parts are produced using high-quality Bambu Lab 3D printers
+    </div>
   </div>
   <div class="step">
-    Each part is finished, quality-inspected, and securely packaged
+    <div class="step-text">
+      Each part is finished, quality-inspected, and securely packaged
+    </div>
   </div>
   <div class="step">
-    Orders are shipped directly to your door
+    <div class="step-text">
+      Orders are shipped directly to your door
+    </div>
   </div>
 </div>
 
